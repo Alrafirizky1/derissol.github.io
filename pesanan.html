@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>Deris Foods</title>
+  <style>
+    .badge-custom {
+      cursor: pointer;
+    }
+    .jumbotron {
+      background-image: url('images/Background/bg8.jpg'); /* Ganti dengan URL gambar latar belakang Anda */
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+    .jumbotron h1,
+    .jumbotron p {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Jumbotron -->
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1 class="display-4 font-weight-bold">DERIS FOODS</h1>
+      <hr>
+      <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br> 
+      Enjoy Your Meal</p>
+    </div>
+  </div>
+  <!-- Akhir Jumbotron -->
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html"><strong>Deris</strong> Foods</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link mr-4" href="index.html">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-4" href="daftar_menu.html">DAFTAR MENU</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-4" href="pesanan.html">PESAN DISINI</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mr-4" href="index.html">LOGOUT</a>
+          </li>
+        </ul>
+      </div>
+    </div> 
+  </nav>
+  <!-- Akhir Navbar -->
+
+  <!-- Menu -->
+  <div class="container mt-5">
+    <h3 class="text-center font-weight-bold">DATA PESANAN</h3>
+    <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#addOrderModal">Tambah Pesanan</button>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="example">
+        <thead class="thead-light">
+          <tr>
+            <th>ID</th>
+            <th>Nama Pemesan</th>
+            <th>No. Meja</th>
+            <th>Nama Pesanan</th>
+            <th>Jumlah</th>
+            <th>Tanggal</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="orderTableBody">
+          <!-- Data Pesanan -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Akhir Menu -->
+
+  <!-- Modal Tambah Pesanan -->
+  <div class="modal fade" id="addOrderModal" tabindex="-1" aria-labelledby="addOrderModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addOrderModalLabel">Tambah Pesanan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="orderForm">
+            <div class="form-group">
+              <label for="pemesanName">Nama Pemesan</label>
+              <input type="text" class="form-control" id="pemesanName" required>
+            </div>
+            <div class="form-group">
+              <label for="tableNumber">No. Meja</label>
+              <input type="number" class="form-control" id="tableNumber" required>
+            </div>
+            <div class="form-group">
+              <label for="orderName">Nama Pesanan</label>
+              <input type="text" class="form-control" id="orderName" required>
+            </div>
+            <div class="form-group">
+              <label for="quantity">Jumlah</label>
+              <input type="number" class="form-control" id="quantity" required>
+            </div>
+            <div class="form-group">
+              <label for="date">Tanggal</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+            <div class="form-group">
+              <label for="status">Status</label>
+              <select class="form-control" id="status" required>
+                <option value="Dalam Proses">Dalam Proses</option>
+                <option value="Selesai">Selesai</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Akhir Modal Tambah Pesanan -->
+
+  <!-- Modal Tambah Menu -->
+  <div class="modal fade" id="addMenuModal" tabindex="-1" aria-labelledby="addMenuModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addMenuModalLabel">Tambah Menu</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="menuForm">
+            <div class="form-group">
+              <label for="menuName">Nama Menu</label>
+              <input type="text" class="form-control" id="menuName" required>
+            </div>
+            <div class="form-group">
+              <label for="menuPrice">Harga Menu</label>
+              <input type="number" class="form-control" id="menuPrice" required>
+            </div>
+            <div class="form-group">
+              <label for="menuImage">Gambar Menu</label>
+              <input type="text" class="form-control" id="menuImage" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Tambah</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Akhir Modal Tambah Menu -->
+
+  <!-- Awal Footer -->
+  <hr class="footer">
+  <div class="container">
+    <div class="row footer-body">
+      <div class="col-md-6">
+        <div class="copyright">
+          <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 -  Designed by AlrafiRizky</p>
+        </div>
+      </div>
+
+      <div class="col-md-6 d-flex justify-content-end">
+        <div class="icon-contact">
+          <label class="font-weight-bold">Follow Us </label>
+          <a href="#"><i class="fa-brands fa-facebook mr-3 ml-4" data-toggle="tooltip" title="Facebook"></i></a>
+          <a href="https://www.instagram.com/alrafirizky13/"><i class="fa-brands fa-instagram mr-3" data-toggle="tooltip" title="Instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter" data-toggle="tooltip" title="Twitter"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Akhir Footer -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var table = $('#example').DataTable();
+
+      function loadPesanan() {
+        var orders = JSON.parse(localStorage.getItem('orders')) || [];
+        orders.forEach(function(order, index) {
+          var newRow = table.row.add([
+            index + 1,
+            order.pemesanName,
+            order.tableNumber,
+            order.orderName,
+            order.quantity,
+            order.date,
+            order.status,
+            '<span class="badge badge-success badge-custom">Selesai</span> <span class="badge badge-warning badge-custom">Dalam Proses</span> <button class="btn btn-danger btn-sm btn-delete">Hapus</button>'
+          ]).draw().node();
+
+          $(newRow).find('.badge-success').on('click', function() {
+            $(this).parents('tr').find('td:eq(6)').text('Selesai');
+            savePesanan();
+          });
+          $(newRow).find('.badge-warning').on('click', function() {
+            $(this).parents('tr').find('td:eq(6)').text('Dalam Proses');
+            savePesanan();
+          });
+          $(newRow).find('.btn-delete').on('click', function() {
+            table.row($(this).parents('tr')).remove().draw();
+            savePesanan();
+          });
+        });
+      }
+
+      function savePesanan() {
+        var orders = [];
+        table.rows().every(function() {
+          var data = this.data();
+          orders.push({
+            pemesanName: data[1],
+            tableNumber: data[2],
+            orderName: data[3],
+            quantity: data[4],
+            date: data[5],
+            status: data[6]
+          });
+        });
+        localStorage.setItem('orders', JSON.stringify(orders));
+      }
+
+      function savePesananItem(menuName, menuPrice, menuImage) {
+        var menus = JSON.parse(localStorage.getItem('menus')) || [];
+        menus.push({ menuName: menuName, menuPrice: menuPrice, menuImage: menuImage });
+        localStorage.setItem('menus', JSON.stringify(menus));
+      }
+
+      $('#orderForm').on('submit', function(event) {
+        event.preventDefault();
+        
+        var pemesanName = $('#pemesanName').val();
+        var tableNumber = $('#tableNumber').val();
+        var orderName = $('#orderName').val();
+        var quantity = $('#quantity').val();
+        var date = $('#date').val();
+        var status = $('#status').val();
+
+        var newRow = table.row.add([
+          table.rows().count() + 1,
+          pemesanName,
+          tableNumber,
+          orderName,
+          quantity,
+          date,
+          status,
+          '<span class="badge badge-success badge-custom">Selesai</span> <span class="badge badge-warning badge-custom">Dalam Proses</span> <button class="btn btn-danger btn-sm btn-delete">Hapus</button>'
+        ]).draw().node();
+        
+        // Add click event for new badges and delete button
+        $(newRow).find('.badge-success').on('click', function() {
+          $(this).parents('tr').find('td:eq(6)').text('Selesai');
+          savePesanan();
+        });
+        $(newRow).find('.badge-warning').on('click', function() {
+          $(this).parents('tr').find('td:eq(6)').text('Dalam Proses');
+          savePesanan();
+        });
+        $(newRow).find('.btn-delete').on('click', function() {
+          table.row($(this).parents('tr')).remove().draw();
+          savePesanan();
+        });
+
+        $('#addOrderModal').modal('hide');
+        $('#orderForm')[0].reset();
+        savePesanan();
+      });
+
+      $('#menuForm').on('submit', function(event) {
+        event.preventDefault();
+        
+        var menuName = $('#menuName').val();
+        var menuPrice = $('#menuPrice').val();
+        var menuImage = $('#menuImage').val();
+
+        savePesananItem(menuName, menuPrice, menuImage);
+        $('#addMenuModal').modal('hide');
+        $('#menuForm')[0].reset();
+      });
+
+      $('#orderTableBody').on('click', '.badge-success', function() {
+        $(this).parents('tr').find('td:eq(6)').text('Selesai');
+        savePesanan();
+      });
+      $('#orderTableBody').on('click', '.badge-warning', function() {
+        $(this).parents('tr').find('td:eq(6)').text('Dalam Proses');
+        savePesanan();
+      });
+      $('#orderTableBody').on('click', '.btn-delete', function() {
+        table.row($(this).parents('tr')).remove().draw();
+        savePesanan();
+      });
+
+      loadPesanan();
+    });
+  </script>
+</body>
+</html>

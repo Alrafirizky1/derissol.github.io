@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gZ9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Deris Foods</title>
+    <style>
+      .badge-custom {
+        cursor: pointer;
+      }
+      .jumbotron {
+        background-image: url('images/Background/bg8.jpg'); /* Ganti dengan URL gambar latar belakang Anda */
+        background-size: cover;
+        background-position: center;
+        color: white;
+      }
+      .jumbotron h1,
+      .jumbotron p {
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+  <!-- Jumbotron -->
+      <div class="jumbotron jumbotron-fluid text-center">
+        <div class="container">
+          <h1 class="display-4"><span class="font-weight-bold">DERIS FOODS</span></h1>
+          <hr>
+          <p class="lead font-weight-bold">Silahkan Pesan Menu Sesuai Keinginan Anda <br> 
+          Enjoy Your Meal</p>
+        </div>
+      </div>
+  <!-- Akhir Jumbotron -->
+
+  <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg  bg-dark">
+        <div class="container">
+        <a class="navbar-brand text-white" href="index.html"><strong>Deris</strong> Foods</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link mr-4" href="index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mr-4" href="daftar_menu.html">DAFTAR MENU</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mr-4" href="pesanan.html">PESAN DISINI</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link mr-4" href="index.html">LOGOUT</a>
+            </li>
+          </ul>
+        </div>
+       </div> 
+      </nav>
+  <!-- Akhir Navbar -->
+
+  <!-- Menu -->
+      <div class="container">
+        <!-- Form to add new menu item -->
+        <form id="addMenuItemForm" class="mt-3">
+          <div class="form-row">
+            <div class="form-group col-md-3">
+              <input type="text" class="form-control" id="menuName" placeholder="Nama Menu" required>
+            </div>
+            <div class="form-group col-md-3">
+              <input type="text" class="form-control" id="menuPrice" placeholder="Harga" required>
+            </div>
+            <div class="form-group col-md-3">
+              <input type="text" class="form-control" id="menuImage" placeholder="URL Gambar" required>
+            </div>
+            <div class="form-group col-md-3">
+              <button type="submit" class="btn btn-success">Tambah Menu</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="row mt-3" id="menuItems">
+          <!-- Existing menu items here -->
+        </div>
+      </div>
+  <!-- Akhir Menu -->
+
+  <!-- Awal Footer -->
+      <hr class="footer">
+      <div class="container">
+        <div class="row footer-body">
+          <div class="col-md-6">
+            <div class="copyright">
+              <strong>Copyright</strong> <i class="far fa-copyright"></i> 2024 -  Designed by AlrafiRizky</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 d-flex justify-content-end">
+            <div class="icon-contact">
+              <label class="font-weight-bold">Follow Us </label>
+              <a href="#"><i class="fa-brands fa-facebook mr-3 ml-4" data-toggle="tooltip" title="Facebook"></i></a>
+              <a href="https://www.instagram.com/alrafirizky13/"><i class="fa-brands fa-instagram mr-3" data-toggle="tooltip" title="Instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-twitter" data-toggle="tooltip" title="Twitter"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+  <!-- Akhir Footer -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script>
+      // Function to load menu items from localStorage
+      function loadMenuItems() {
+        const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
+        const menuContainer = document.getElementById('menuItems');
+        menuContainer.innerHTML = '';
+
+        menuItems.forEach((item, index) => {
+          const newMenuItem = document.createElement('div');
+          newMenuItem.classList.add('col-md-3');
+          newMenuItem.innerHTML = `
+            <div class="card border-dark">
+              <img src="${item.image}" class="card-img-top" alt="${item.name}">
+              <div class="card-body">
+                <h5 class="card-title font-weight-bold">${item.name}</h5>
+                <label class="card-text">${item.price}</label><br>
+                <button class="btn btn-primary btn-sm" onclick="editMenuItem(${index})">EDIT</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteMenuItem(${index})">HAPUS</button>
+              </div>
+            </div>
+          `;
+          menuContainer.appendChild(newMenuItem);
+        });
+      }
+
+      // Function to save menu items to localStorage
+      function saveMenuItem(name, price, image) {
+        const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
+        menuItems.push({ name, price, image });
+        localStorage.setItem('menuItems', JSON.stringify(menuItems));
+      }
+
+      // Function to update menu items in localStorage
+      function updateMenuItem(index, name, price, image) {
+        const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
+        menuItems[index] = { name, price, image };
+        localStorage.setItem('menuItems', JSON.stringify(menuItems));
+      }
+
+      // Function to delete menu items from localStorage
+      function deleteMenuItem(index) {
+        const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
+        menuItems.splice(index, 1);
+        localStorage.setItem('menuItems', JSON.stringify(menuItems));
+        loadMenuItems();
+      }
+
+      // Function to edit menu items
+      function editMenuItem(index) {
+        const menuItems = JSON.parse(localStorage.getItem('menuItems')) || [];
+        const item = menuItems[index];
+        document.getElementById('menuName').value = item.name;
+        document.getElementById('menuPrice').value = item.price;
+        document.getElementById('menuImage').value = item.image;
+
+        // Change the submit button text to "Update Menu"
+        document.querySelector('#addMenuItemForm button').textContent = 'Update Menu';
+
+        // Set up the form to update the item instead of adding a new one
+        document.getElementById('addMenuItemForm').onsubmit = function(event) {
+          event.preventDefault();
+          updateMenuItem(index, 
+            document.getElementById('menuName').value, 
+            document.getElementById('menuPrice').value, 
+            document.getElementById('menuImage').value
+          );
+          loadMenuItems();
+          document.getElementById('addMenuItemForm').reset();
+          document.querySelector('#addMenuItemForm button').textContent = 'Tambah Menu';
+          document.getElementById('addMenuItemForm').onsubmit = addMenuItem;
+        };
+      }
+
+      // Function to add a new menu item
+      function addMenuItem(event) {
+        event.preventDefault();
+
+        var menuName = document.getElementById('menuName').value;
+        var menuPrice = document.getElementById('menuPrice').value;
+        var menuImage = document.getElementById('menuImage').value;
+
+        // Save the new menu item to localStorage
+        saveMenuItem(menuName, menuPrice, menuImage);
+
+        // Load the menu items to reflect the newly added item
+        loadMenuItems();
+
+        // Reset the form
+        document.getElementById('addMenuItemForm').reset();
+      }
+
+      document.getElementById('addMenuItemForm').onsubmit = addMenuItem;
+
+      // Load menu items on page load
+      window.onload = loadMenuItems;
+    </script>
+  </body>
+</html>
